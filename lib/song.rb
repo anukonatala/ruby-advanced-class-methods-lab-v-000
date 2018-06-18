@@ -45,9 +45,10 @@ class Song
   def self.new_from_filename(filename)
     filearray = filename.split("-")
     song = self.new
-    song.name = filearray[1].split(".")[0]
+    self.find_or_create_by_name(filearray[1].split(".")[0])
     song.artist_name = filearray[0]
   end
+  
   def save
     self.class.all << self
   end
